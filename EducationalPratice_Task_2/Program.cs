@@ -35,11 +35,9 @@ namespace EducationalPratice_Task_2
                     Calc(i + sum, s + iToString(i) + '+', i);
                 return;
             }
+            //Остальные проходы
             for (int i = q; i + sum <= Number; i++)
-            {
-              
                 Calc(i + sum, s + iToString(i) + '+', i);
-            }
             return;
         }
         static void Main(string[] args)
