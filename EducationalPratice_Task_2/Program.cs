@@ -5,15 +5,15 @@ namespace EducationalPratice_Task_2
     class Program
     {
         private static int Number;
-        static string iToString(int i)
+        static string concat(int value)
         {
-            string s = "";
-            while (i > 0)
+            string temp = "";
+            while (value > 0)
             {
-                s = (char) (i % 10 + '0')+s;
-                i /= 10;
+                temp = (char)(value % 10 + '0') + temp;
+                value /= 10;
             }
-            return s;
+            return temp;
         }
         /// <summary>
         /// Разложение числа на слагаемые
@@ -21,7 +21,7 @@ namespace EducationalPratice_Task_2
         /// <param name="sum">сумма </param>
         /// <param name="s">выходная строка</param>
         /// <param name="q"> число по которому будет использовано для разложения </param>
-       static void Calc(int sum, string s, int q)
+        static void Calc(int sum, string s, int q)
         {
             if (sum == Number)//Если сумма равна заданому числу
             {
@@ -31,20 +31,23 @@ namespace EducationalPratice_Task_2
 
             if (sum == 0)//Первый проход когда сумма 0
             {
-                for (int i = q; i + sum < Number; i++) //отчет с заданого значение, если в начале то 1
-                    Calc(i + sum, s + iToString(i) + '+', i);
+                for (int i = q; i + sum < Number; i++) //отчет с 
+
+
+                    Calc(i + sum, s + concat(i) + '+', i);
                 return;
             }
-            //Остальные проходы
+
             for (int i = q; i + sum <= Number; i++)
-                Calc(i + sum, s + iToString(i) + '+', i);
+
+                Calc(i + sum, s + concat(i) + '+', i);
             return;
         }
         static void Main(string[] args)
         {
             Number = Convert.ToInt32(Console.ReadLine());
 
-            Calc(0,"",1);
+            Calc(0, "", 1);
 
             Console.ReadLine();
         }
